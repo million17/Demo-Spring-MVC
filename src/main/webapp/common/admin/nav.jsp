@@ -11,7 +11,7 @@
 			</div> <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
 	</a></li>
 	<li class="nav-item">
-		<a class="nav-link" href="#" > 
+		<a class="nav-link" href="<c:url value = '/admin/new/list' /> " > 
 		<span class="menu-title">List News</span> 
 		<i class="mdi mdi-home menu-icon"></i>
 		</a>
