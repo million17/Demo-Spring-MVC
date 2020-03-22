@@ -7,10 +7,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller(value = "homeControllerOfWeb")
 public class HomeController {
-  
-	@RequestMapping(value = "/web", method = RequestMethod.GET)
-	   public ModelAndView homePage() {
-	      ModelAndView mav = new ModelAndView("web/home");
-	      return mav;
-	   }
+
+    @RequestMapping(value = "/web", method = RequestMethod.GET)
+    public ModelAndView homePage() {
+        ModelAndView mav = new ModelAndView("web/home");
+        return mav;
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView loginPage() {
+        ModelAndView mav = new ModelAndView("/login/login");
+        return mav;
+    }
 }
