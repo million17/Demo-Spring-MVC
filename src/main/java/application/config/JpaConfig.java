@@ -19,7 +19,7 @@ import java.util.Properties;
 @Configuration
 @EnableJpaRepositories(basePackages = {"application.repository"})
 @EnableTransactionManagement
-public class JPAConfig {
+public class JpaConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
