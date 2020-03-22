@@ -1,6 +1,8 @@
 package application.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -17,8 +19,27 @@ public class UserEntity extends BaseEntity{
     @Column(name = "password")
     private String password;
 
+    @ManyToMany
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<RoleEntity> roles = new ArrayList<>();
+
     @Column(name = "fullname")
     private String fullName;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<RoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RoleEntity> roles) {
+        this.roles = roles;
+    }
 
     @Column(name = "status")
     private int status;
