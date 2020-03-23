@@ -1,3 +1,6 @@
+<%@ page import="application.util.SecurityUtils" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <nav
 	class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 	<div
@@ -28,7 +31,7 @@
 							class="availability-status online"></span>
 					</div>
 					<div class="nav-profile-text">
-						<p class="mb-1 text-black">Hello</p>
+						<p class="mb-1 text-black"> <%= SecurityUtils.getPrincipal().getFullName() %> </p>
 					</div>
 			</a>
 				<div class="dropdown-menu navbar-dropdown"
@@ -37,7 +40,7 @@
 						class="mdi mdi-cached mr-2 text-success"></i> Activity Log
 					</a>
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#"> <i
+					<a class="dropdown-item" href="<c:url value="/logout" /> "> <i
 						class="mdi mdi-logout mr-2 text-primary"></i> Signout
 					</a>
 				</div></li>

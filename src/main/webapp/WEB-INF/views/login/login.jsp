@@ -5,6 +5,10 @@
 			<div class="alert alert-danger my-3 mx-3" role="alert">
 					Username or Password incorrect</div>
 		</c:if>
+		<c:if test="${param.accessDenied != null}">
+			<div class="alert alert-danger my-3 mx-3" role="alert">
+				Use not authorize</div>
+		</c:if>
 		<div class="card-body">
 			<form action="j_spring_security_check" method="post"
 				  id="formLogin">

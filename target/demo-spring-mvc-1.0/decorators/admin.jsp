@@ -48,7 +48,6 @@
 		<%@ include file="/common/admin/footer.jsp"%>
 		<!-- end footer -->
 	</div>
-	<script src="<c:url value= '/ckeditor/ckeditor.js' /> "></script>
 	<!-- plugins:js -->
 	<script
 		src="<c:url value='/template/admin/vendors/js/vendor.bundle.base.js'/>"></script>
@@ -69,7 +68,6 @@
 	
 	<script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
-	<script src="<c:url value='/template/pagination/jquery.twbsPagination.js' /> " type="text/javascript"></script>
 	<!-- end js and jquery -->
 
 </body>
