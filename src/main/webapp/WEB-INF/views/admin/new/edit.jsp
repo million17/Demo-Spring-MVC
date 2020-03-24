@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
-<c:url var="APIurl" value="/api-admin-new" />
 <!DOCTYPE html>
 <html>
 
@@ -21,53 +20,36 @@
 						<div class="alert alert-${alert} my-3 mx-3" role="alert">
 							${messageResponse}</div>
 					</c:if>
-					<form id="formSubmit">
+					<form id="formSubmit" role="form">
 						<div class="form-group">
-							<label for="titile">Title</label> <input type="text"
-								class="form-control" id="title" name="title" placeholder="title"
-								value="${vm.title}">
-						</div>
-						<div class="form-group">
-							<label for="thumbnail">Thumbnail</label> <input type="text"
-								class="form-control" id="thumbnail" name="thumbnail" placeholder="thumbnail"
-								value="${vm.thumbnail}">
-						</div>
-						<div class="form-group">
-							<label for="exampleFormControlSelect1">Category</label> <select
-								class="form-control" id="categoryCode" name="categoryCode">
-								<c:if test="${empty vm.categoryCode }">
-									<option value="">Select Category</option>
-									<c:forEach var="item" items="${categories}">
-										<option value="${ item.code}">${item.name}</option>
-									</c:forEach>
-								</c:if>
-								<c:if test="${not empty vm.categoryCode }">
-									<option value="">Select Category</option>
-									<c:forEach var="item" items="${categories}">
-										<option value="${item.code }"
-											<c:if test="${ item.code == vm.categoryCode}">selected="selected"</c:if>>
-											${item.name }</option>
-									</c:forEach>
-								</c:if>
+							<label for="categoryCode">Category</label>
+							<select class="form-control form-control-lg" name="categoryCode" id="categoryCode">
+								<option value="1">Pháp Luật</option>
+								<option value="2">Thể Thao</option>
+								<option value="3">Thời Sự</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="shortDesc">Short Description</label> <input
-								type="text" class="form-control" id="shortDesc"
-								placeholder="Password" name="shortDesc" value="${vm.shortDesc}">
+							<label for="title">Title</label>
+							<input type="text"
+								class="form-control" id="title" name="title" placeholder="title"
+								value="">
+						</div>
+						<div class="form-group">
+							<label>Thumbnail</label>
+							<input type="file" name="thumbnail" id="thumbnail" class="form-control">
+						</div>
+
+						<div class="form-group">
+							<label for="shortDesc">Textarea</label>
+							<textarea class="form-control" id="shortDesc" name="shortDesc" rows="4"></textarea>
 						</div>
 						<div class="form-group">
 							<label for="content">Content</label>
-							<textarea name="content" id="content" cols="30" rows="10" value="${vm.content}"></textarea>
+							<textarea  class="form-control" name="content" id="content" rows="4" value=""></textarea>
 						</div>
-						<c:if test="${empty vm.id}">
-							<input type="button" class="btn btn-success" value="Add" id="btnAddOrEdit" />
-						</c:if>
-						<c:if test="${not empty vm.id}">
-							<input type="button" class="btn btn-light" value="Update" id="btnAddOrEdit" />
-						</c:if>
+						<button class="btn btn-gradient-primary mr-2" id="btnAddOrEdit" type="button">Submit</button>
 						<button class="btn btn-light">Cancel</button>
-						<input type="hidden" value="${vm.id}" id="id" />
 					</form>
 				</div>
 			</div>

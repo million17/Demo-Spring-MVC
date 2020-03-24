@@ -14,6 +14,10 @@ public class NewEntity extends BaseEntity {
     @Column(name = "title")
     private String title;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private CategoryEntity category;
+
     @Column(name = "thumbnail")
     private String thumbnail;
 
@@ -22,6 +26,14 @@ public class NewEntity extends BaseEntity {
 
     @Column(name = "content", columnDefinition = "TEXT")
     private String content;
+
+    public CategoryEntity getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryEntity category) {
+        this.category = category;
+    }
 
     public Long getId() {
         return id;
