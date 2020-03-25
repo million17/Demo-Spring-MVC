@@ -12,7 +12,7 @@
 
 <body>
 	<div class="d-flex justify-content-end">
-		<c:url value="/admin/new/edit/" var="/createNewURL" />
+		<c:url value="/admin/new/edit/" var="createNewURL" />
 		<a href="${createNewURL}" class="btn btn-gradient-primary btn-icon-text mr-4">
             <i class="mdi mdi-file-check btn-icon-prepend"></i>
             Add News
