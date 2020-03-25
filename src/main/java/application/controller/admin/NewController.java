@@ -1,6 +1,7 @@
 package application.controller.admin;
 
 import application.dto.NewDTO;
+import application.service.impl.CategoryService;
 import application.service.impl.NewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,9 @@ public class NewController {
     @Autowired
     private NewService newService;
 
+    @Autowired
+    private CategoryService categoryService;
+
     @RequestMapping(value = "/admin/new/list", method = RequestMethod.GET)
     public ModelAndView showNew() {
         NewDTO vm = new NewDTO();
@@ -24,13 +28,14 @@ public class NewController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/new/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/new/edit/", method = RequestMethod.GET)
     public ModelAndView editNew(@RequestParam(value = "id", required = false) Long id) {
         ModelAndView modelAndView = new ModelAndView("/admin/new/edit");
         NewDTO vm = new NewDTO();
         if (id != null) {
             vm = newService.findById(id);
         }
+        modelAndView.addObject("categories", categoryService.findAll());
         modelAndView.addObject("vm", vm);
         return modelAndView;
     }

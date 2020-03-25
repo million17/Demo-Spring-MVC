@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
-<c:url var="APIurl" value="/api-admin-new" />
-<c:url var="NEWurl" value="/admin-new" />
+
 <!DOCTYPE html>
 <html>
 
@@ -13,7 +12,8 @@
 
 <body>
 	<div class="d-flex justify-content-end">
-		<a href="#" class="btn btn-gradient-primary btn-icon-text mr-4">
+		<c:url value="/admin/new/edit/" var="/createNewURL" />
+		<a href="${createNewURL}" class="btn btn-gradient-primary btn-icon-text mr-4">
             <i class="mdi mdi-file-check btn-icon-prepend"></i>
             Add News
         </a>
@@ -45,7 +45,10 @@
 							<td>${ item.shortDesc }</td>
 							<td>${ item.content }</td> 
 							<td>
-							<a class="btn btn-gradient-dark btn-icon-text" href="#">
+								<c:url value="/admin/new/edit/" var="updateNewURL">
+									<c:param name="id" value="${item.id}"  />
+								</c:url>
+							<a class="btn btn-gradient-dark btn-icon-text" href="${updateNewURL}">
                          		<i class="mdi mdi-file-check btn-icon-append"></i>                          
                         	</a></td>
 						</tr>

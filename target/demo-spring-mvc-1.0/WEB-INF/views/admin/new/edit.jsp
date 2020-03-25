@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
-<c:url var="APIurl" value="/api-admin-new" />
 <!DOCTYPE html>
 <html>
 
@@ -21,37 +20,40 @@
 						<div class="alert alert-${alert} my-3 mx-3" role="alert">
 							${messageResponse}</div>
 					</c:if>
-					<form id="formSubmit" role="form">
+					<form:form id="formSubmit" role="form" modelAttribute="vm">
 						<div class="form-group">
 							<label for="categoryCode">Category</label>
-							<select class="form-control form-control-lg" name="categoryCode" id="categoryCode">
-								<option value="1">Pháp Luật</option>
-								<option value="2">Thể Thao</option>
-								<option value="3">Thời Sự</option>
-							</select>
+                            <form:select path="categoryCode" id="categoryCode">
+                                <form:option value="" label="--Category--"></form:option>
+                                <form:options items="${categories}"></form:options>
+                            </form:select>
 						</div>
 						<div class="form-group">
 							<label for="title">Title</label>
-							<input type="text"
-								class="form-control" id="title" name="title" placeholder="title"
-								value="">
+                            <form:input path="title" cssClass="form-control" id="title" />
 						</div>
 						<div class="form-group">
 							<label>Thumbnail</label>
-							<input type="file" name="thumbnail" id="thumbnail" class="form-control">
+							<input type="file" class="form-control" id="thumbnail" name="thumbnail"/>
 						</div>
 
 						<div class="form-group">
 							<label for="shortDesc">Textarea</label>
-							<textarea class="form-control" id="shortDesc" name="shortDesc" rows="4"></textarea>
+                            <form:textarea path="shortDesc" id="shortDesc" cssClass="form-control" />
 						</div>
 						<div class="form-group">
 							<label for="content">Content</label>
-							<textarea  class="form-control" name="content" id="content" rows="4" value=""></textarea>
+                            <form:textarea path="content" id="content"  rows="4" cssClass="form-control" />
 						</div>
-						<button class="btn btn-gradient-primary mr-2" id="btnAddOrEdit" type="button">Submit</button>
+                        <c:if test="${not empty vm.id}">
+                            <button class="btn btn-gradient-primary mr-2" id="btnAddOrEdit" type="button">Edit</button>
+                        </c:if>
+                        <c:if test="${empty vm.id}">
+                            <button class="btn btn-gradient-primary mr-2" id="btnAddOrEdit" type="button">Add</button>
+                        </c:if>
+
 						<button class="btn btn-light">Cancel</button>
-					</form>
+					</form:form>
 				</div>
 			</div>
 		</div>

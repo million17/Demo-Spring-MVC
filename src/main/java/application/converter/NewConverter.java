@@ -10,6 +10,7 @@ public class NewConverter {
     public NewDTO toDTO(NewEntity entity){
 
         NewDTO result = new NewDTO();
+        result.setId(entity.getId());
         result.setTitle(entity.getTitle());
         result.setContent(entity.getContent());
         result.setShortDesc(entity.getShortDesc());

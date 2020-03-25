@@ -9,6 +9,7 @@ public class CategoryConverter {
 
     public CategoryDTO toDTO(CategoryEntity entity) {
         CategoryDTO result = new CategoryDTO();
+        result.setId(entity.getId());
         result.setCode(entity.getCode());
         result.setName(entity.getName());
 

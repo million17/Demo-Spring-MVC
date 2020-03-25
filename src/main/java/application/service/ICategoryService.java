@@ -1,9 +1,7 @@
 package application.service;
 
-import application.dto.CategoryDTO;
-
-import java.util.List;
+import java.util.Map;
 
 public interface ICategoryService {
-    List<CategoryDTO> findAll();
+    Map<String,String> findAll();
 }
