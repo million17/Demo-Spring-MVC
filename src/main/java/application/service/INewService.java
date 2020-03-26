@@ -7,4 +7,5 @@ import java.util.List;
 public interface INewService {
     List<NewDTO> findAll();
     NewDTO findById(long id);
+    NewDTO save(NewDTO newDTO);
 }

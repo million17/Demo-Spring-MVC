@@ -31,4 +31,14 @@ public class NewConverter {
 
     }
 
+    public NewEntity toEntity(NewEntity result, NewDTO dto){
+        result.setTitle(dto.getTitle());
+        result.setContent(dto.getContent());
+        result.setShortDesc(dto.getShortDesc());
+        result.setThumbnail(dto.getThumbnail());
+
+        return result;
+
+    }
+
 }
