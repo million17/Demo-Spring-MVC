@@ -7,6 +7,7 @@ import application.repository.NewRepository;
 import application.service.INewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,5 +37,15 @@ public class NewService implements INewService {
     public NewDTO findById(long id) {
         NewEntity entity = newRepository.findOne(id);
         return newConverter.toDTO(entity);
+    }
+
+    @Override
+    public NewDTO insert(NewDTO dto) {
+        return null;
+    }
+
+    @Override
+    public NewDTO update(NewDTO updateNew) {
+        return null;
     }
 }
