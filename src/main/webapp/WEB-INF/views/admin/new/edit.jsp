@@ -86,7 +86,7 @@
 				data: JSON.stringify(data),
 				dataType: 'json',
 				success: function (result) {
-					window.location.href = "${editNewURL}?id="+result.id;
+					window.location.href = "${newURL}";
 				},
 				error: function (error) {
 					window.location.href = "${newURL}";
@@ -101,10 +101,10 @@
 				data: JSON.stringify(data),
 				dataType: 'json',
 				success: function (result) {
-					window.location.href = "${editNewURL}?id="+result.id;
+					window.location.href = "${newURL}";
 				},
 				error: function (error) {
-					window.location.href = "${editNewURL}?id="+result.id;
+					window.location.href = "${newURL}";
 				}
 			});
 		}

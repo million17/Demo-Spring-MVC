@@ -46,7 +46,6 @@ public class NewService implements INewService {
 
 
     @Override
-    @Transactional
     public NewDTO save(NewDTO newDTO) {
         CategoryEntity categoryEntity = categoryRepository.findOneByCode(newDTO.getCategoryCode());
         NewEntity newEntity = new NewEntity();

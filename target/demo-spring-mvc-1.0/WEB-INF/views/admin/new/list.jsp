@@ -30,9 +30,10 @@
 					<tr>
 						<th><input type="checkbox" id="checkAll" /></th>
 						<th>Title</th>
-						<th>Thumbnail</th>
+<%--						<th>Thumbnail</th>--%>
 						<th>Short Description</th>
 						<th>Content</th>
+						<th>Category</th>
 						<th>Edit</th>
 					</tr>
 				</thead>
@@ -41,9 +42,10 @@
 						<tr>
 							<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" /></td>
 							<td>${ item.title }</td>
-							<td>${ item.thumbnail }</td>
+<%--							<td>${ item.thumbnail }</td>--%>
 							<td>${ item.shortDesc }</td>
-							<td>${ item.content }</td> 
+							<td>${ item.content }</td>
+							<td>${item.categoryName} </td>
 							<td>
 								<c:url value="/admin/new/edit/" var="updateNewURL">
 									<c:param name="id" value="${item.id}"  />
