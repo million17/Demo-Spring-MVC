@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
-
+<c:url var="newAPI" value="/api/new"/>
+<c:url var="newURL" value="/admin/new/list"/>
 <!DOCTYPE html>
 <html>
 
@@ -33,21 +34,18 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th><input type="checkbox" id="checkAll" /></th>
 						<th>Title</th>
-<%--						<th>Thumbnail</th>--%>
 						<th>Short Description</th>
 						<th>Content</th>
 						<th>Category</th>
 						<th>Edit</th>
+						<th><input type="checkbox" id="checkAll" /> Delete</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="item" items="${vm.listResult}">
 						<tr>
-							<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" /></td>
 							<td>${ item.title }</td>
-<%--							<td>${ item.thumbnail }</td>--%>
 							<td>${ item.shortDesc }</td>
 							<td>${ item.content }</td>
 							<td>${item.categoryName} </td>
@@ -58,6 +56,7 @@
 							<a class="btn btn-gradient-dark btn-icon-text" href="${updateNewURL}">
                          		<i class="mdi mdi-file-check btn-icon-append"></i>                          
                         	</a></td>
+							<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" /></td>
 						</tr>
 					</c:forEach>
 
@@ -79,9 +78,28 @@
 				closeOnCancel: false
 			}).then(function(isConfirm) {
 				if (isConfirm) {
+					var data = {};
+					var ids = $('tbody input[type=checkbox]:checked').map(function(){
+						return $(this).val();
+					}).get();
+					deleteNew(ids);
 					swal("Deleted!", "Your imaginary file has been deleted.", "success");
 				} else {
 					swal("Cancelled", "Your imaginary file is safe :)", "error");
+				}
+			});
+		}
+		function deleteNew(data){
+			$.ajax({
+				url : '${newAPI}',
+				type : 'DELETE',
+				contentType: 'application/json',
+				data: JSON.stringify(data),
+				success: function (result) {
+					window.location.href = "${editNewURL}?id=" +  result.id + "&message=update_success" ;
+				},
+				error: function (error) {
+					window.location.href = "${editNewURL}?id=" +  result.id + "&message=error_system" ;
 				}
 			});
 		}
