@@ -8,4 +8,5 @@ public interface INewService {
     List<NewDTO> findAll();
     NewDTO findById(long id);
     NewDTO save(NewDTO newDTO);
+    void delete(long[] ids);
 }

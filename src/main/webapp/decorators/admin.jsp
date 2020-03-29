@@ -23,6 +23,11 @@
 <!-- endinject -->
 <link rel="shortcut icon"
 	href="<c:url value= '/template/admin/images/favicon.png' /> " />
+
+	<%--sweelalert2--%>
+	<link rel="stylesheet"
+		  href="<c:url value= '/template/admin/sweetalert/sweetalert2.min.css' /> ">
+
 	
 </head>
 <body>
@@ -48,6 +53,9 @@
 		<%@ include file="/common/admin/footer.jsp"%>
 		<!-- end footer -->
 	</div>
+	<%--sweelalert2--%>
+	<script
+			src="<c:url value='/template/admin/sweetalert/sweetalert2.min.js'/>"></script>
 	<!-- plugins:js -->
 	<script
 		src="<c:url value='/template/admin/vendors/js/vendor.bundle.base.js'/>"></script>

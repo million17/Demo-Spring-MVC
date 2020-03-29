@@ -24,6 +24,6 @@ public class NewApiController {
 
     @DeleteMapping("/api/new")
     public void deleteNew(@RequestBody long[] ids) {
-
+        newService.delete(ids);
     }
 }

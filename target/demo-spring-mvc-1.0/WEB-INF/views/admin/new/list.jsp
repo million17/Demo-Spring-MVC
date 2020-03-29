@@ -17,7 +17,7 @@
             <i class="mdi mdi-file-check btn-icon-prepend"></i>
             Add News
         </a>
-        <button id="btnDelete" type="button" class="btn btn-gradient-dark mr-4">
+        <button id="btnDelete" onclick="warningBeforeDelete()" type="button" class="btn btn-gradient-dark mr-4">
             <i class="mdi mdi-file-check btn-icon-prepend"></i>
             Delete
          </button>
@@ -66,6 +66,25 @@
 		</div>
 	</form>
 	<script type="text/javascript">
+		function warningBeforeDelete() {
+			swal({
+				title: "Are you sure?",
+				text: "You will not be able to recover this imaginary file!",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonClass: "btn-danger",
+				confirmButtonText: "Yes, delete it!",
+				cancelButtonText: "No, cancel plx!",
+				closeOnConfirm: false,
+				closeOnCancel: false
+			}).then(function(isConfirm) {
+				if (isConfirm) {
+					swal("Deleted!", "Your imaginary file has been deleted.", "success");
+				} else {
+					swal("Cancelled", "Your imaginary file is safe :)", "error");
+				}
+			});
+		}
 	</script>
 </body>
 

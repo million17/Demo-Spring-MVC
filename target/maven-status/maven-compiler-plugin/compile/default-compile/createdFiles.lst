@@ -12,6 +12,7 @@ application\service\impl\CustomUserDetailsService.class
 application\repository\UserRepository.class
 application\dto\MyUser.class
 application\controller\admin\NewController.class
+application\util\MessageUtils.class
 application\entity\NewEntity.class
 application\repository\CategoryRepository.class
 application\converter\NewConverter.class

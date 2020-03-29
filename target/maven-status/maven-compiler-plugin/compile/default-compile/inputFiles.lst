@@ -7,6 +7,7 @@ G:\demo-spring-mvc\src\main\java\application\entity\RoleEntity.java
 G:\demo-spring-mvc\src\main\java\application\service\INewService.java
 G:\demo-spring-mvc\src\main\java\application\repository\UserRepository.java
 G:\demo-spring-mvc\src\main\java\application\util\SecurityUtils.java
+G:\demo-spring-mvc\src\main\java\application\util\MessageUtils.java
 G:\demo-spring-mvc\src\main\java\application\dto\CategoryDTO.java
 G:\demo-spring-mvc\src\main\java\application\service\ICategoryService.java
 G:\demo-spring-mvc\src\main\java\application\repository\NewRepository.java
