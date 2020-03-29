@@ -24,6 +24,11 @@
     </div>
 	<form action="#" id="formSubmit"
 		method="get">
+		<c:if test="${not empty message}">
+			<div class="alert alert-${alert}" role="alert">
+				${message}
+			</div>
+		</c:if>
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
