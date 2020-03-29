@@ -17,6 +17,11 @@
 		<div class="col-5 grid-margin stretch-card">
 			<div class="card">
 				<div class="card-body">
+					<c:if test="${not empty message}">
+						<div class="alert alert-${alert}" role="alert">
+							${message}
+						</div>
+					</c:if>
 					<h4 class="card-title">Edit News</h4>
 					<p class="card-description">Basic form edits</p>
 					<c:if test="${not empty messageResponse}">
@@ -86,10 +91,10 @@
 				data: JSON.stringify(data),
 				dataType: 'json',
 				success: function (result) {
-					window.location.href = "${editNewURL}?id="+result.id;
+					window.location.href = "${editNewURL}?id=" +  result.id + "&message=insert_success" ;
 				},
 				error: function (error) {
-					window.location.href = "${newURL}";
+					window.location.href = "${newURL}&message=error_system";
 				}
 			});
 		}
@@ -101,10 +106,10 @@
 				data: JSON.stringify(data),
 				dataType: 'json',
 				success: function (result) {
-					window.location.href = "${editNewURL}?id="+result.id;
+					window.location.href = "${editNewURL}?id=" +  result.id + "&message=update_success" ;
 				},
 				error: function (error) {
-					window.location.href = "${editNewURL}?id="+result.id;
+					window.location.href = "${editNewURL}?id=" +  result.id + "&message=error_system" ;
 				}
 			});
 		}

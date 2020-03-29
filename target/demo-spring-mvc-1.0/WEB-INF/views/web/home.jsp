@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <!-- Page Content -->
 <div class="main-content row mt-5">
 	<div class="col-lg-3 col-md-12 col-sm-12">

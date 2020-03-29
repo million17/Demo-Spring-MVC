@@ -24,15 +24,21 @@
     </div>
 	<form action="#" id="formSubmit"
 		method="get">
+		<c:if test="${not empty message}">
+			<div class="alert alert-${alert}" role="alert">
+				${message}
+			</div>
+		</c:if>
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
 					<tr>
 						<th><input type="checkbox" id="checkAll" /></th>
 						<th>Title</th>
-						<th>Thumbnail</th>
+<%--						<th>Thumbnail</th>--%>
 						<th>Short Description</th>
 						<th>Content</th>
+						<th>Category</th>
 						<th>Edit</th>
 					</tr>
 				</thead>
@@ -41,9 +47,10 @@
 						<tr>
 							<td><input type="checkbox" id="checkbox_${item.id}" value="${item.id}" /></td>
 							<td>${ item.title }</td>
-							<td>${ item.thumbnail }</td>
+<%--							<td>${ item.thumbnail }</td>--%>
 							<td>${ item.shortDesc }</td>
-							<td>${ item.content }</td> 
+							<td>${ item.content }</td>
+							<td>${item.categoryName} </td>
 							<td>
 								<c:url value="/admin/new/edit/" var="updateNewURL">
 									<c:param name="id" value="${item.id}"  />
