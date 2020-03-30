@@ -71,21 +71,17 @@
 				text: "You will not be able to recover this imaginary file!",
 				type: "warning",
 				showCancelButton: true,
-				confirmButtonClass: "btn-danger",
+				confirmButtonClass: "btn-success",
+                cancelButtonClass: "btn-danger",
 				confirmButtonText: "Yes, delete it!",
 				cancelButtonText: "No, cancel plx!",
-				closeOnConfirm: false,
-				closeOnCancel: false
 			}).then(function(isConfirm) {
 				if (isConfirm) {
-					var data = {};
 					var ids = $('tbody input[type=checkbox]:checked').map(function(){
 						return $(this).val();
 					}).get();
 					deleteNew(ids);
 					swal("Deleted!", "Your imaginary file has been deleted.", "success");
-				} else {
-					swal("Cancelled", "Your imaginary file is safe :)", "error");
 				}
 			});
 		}
@@ -96,7 +92,7 @@
 				contentType: 'application/json',
 				data: JSON.stringify(data),
 				success: function (result) {
-					window.location.href = "${editNewURL}?id=" +  result.id + "&message=update_success" ;
+					window.location.href = "${editNewURL}?id=" +  result.id + "&message=delete_success" ;
 				},
 				error: function (error) {
 					window.location.href = "${editNewURL}?id=" +  result.id + "&message=error_system" ;
