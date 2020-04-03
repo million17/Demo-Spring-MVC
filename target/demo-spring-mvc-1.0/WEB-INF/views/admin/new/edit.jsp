@@ -46,7 +46,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="shortDesc">Short Description</label>
+							<label for="shortDesc">Short <Description></Description></label>
                             <form:textarea path="shortDesc" id="shortDesc" cssClass="form-control" />
 						</div>
 						<div class="form-group">
