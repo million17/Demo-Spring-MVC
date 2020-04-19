@@ -1,8 +1,6 @@
 package application.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -11,28 +9,25 @@ public class UserEntity extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @Column(name = "user_name")
     private String userName;
 
-    @Column(name = "name")
-    private String name;
-
     @Column(name = "password")
     private String password;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private List<RoleEntity> roles = new ArrayList<>();
 
     @Column(name = "fullname")
     private String fullName;
 
-    public void setId(Long id) {
+    @Column(name = "status")
+    private int status;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -42,29 +37,6 @@ public class UserEntity extends BaseEntity{
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public List<RoleEntity> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<RoleEntity> roles) {
-        this.roles = roles;
-    }
-
-    @Column(name = "status")
-    private int status;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getPassword() {

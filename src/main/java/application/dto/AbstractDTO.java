@@ -6,7 +6,7 @@ import java.util.List;
 
 public class AbstractDTO<T> {
 
-    private Long id;
+    private int id;
     private Timestamp createdDate;
     private Timestamp modifiedDate;
     private String createdBy;
@@ -23,11 +23,11 @@ public class AbstractDTO<T> {
     private String message;
     private String type;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -6,6 +6,7 @@
         <class>application.entity.NewEntity</class>
         <class>application.entity.UserEntity</class>
         <class>application.entity.RoleEntity</class>
+        <class>application.entity.UserRoleEntity</class>
         <class>application.entity.CategoryEntity</class>
     </persistence-unit>
 </persistence>

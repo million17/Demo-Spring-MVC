@@ -42,7 +42,7 @@ public class NewController {
     }
 
     @RequestMapping(value = "/admin/new/edit", method = RequestMethod.GET)
-    public ModelAndView editNew(@RequestParam(value = "id", required = false) Long id, HttpServletRequest request) {
+    public ModelAndView editNew(@RequestParam(value = "id", required = false) Integer id, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("/admin/new/edit");
         NewDTO vm = new NewDTO();
         if (id != null) {

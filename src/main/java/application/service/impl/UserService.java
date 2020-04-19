@@ -1,7 +1,6 @@
 package application.service.impl;
 
 import application.constant.StatusRegisterUserEnum;
-import application.constant.SystemConstants;
 import application.entity.RoleEntity;
 import application.entity.UserEntity;
 import application.entity.UserRoleEntity;
@@ -13,8 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class UserService implements IUserService {
@@ -33,30 +33,24 @@ public class UserService implements IUserService {
 
     @Override
     public StatusRegisterUserEnum registerNewUser(UserEntity userEntity) {
-            try {
-                userEntity.setUserName(userEntity.getUserName());
-                userEntity.setPassword(bCryptPasswordEncoder.encode(userEntity.getPassword()));
-                userEntity.setStatus(1);
-
-
-                userEntity.setRoles(userEntity.getRoles());
-
-                userRepository.save(userEntity);
-
-
-
-                UserRoleEntity userRoleEntity = new UserRoleEntity();
-                userRoleEntity.setRoleId(SystemConstants.ROLE_USER);
-                userRoleEntity.setUserId(userEntity.getId());
-
-                userRoleRepository.save(userRoleEntity);
-
-
-                return StatusRegisterUserEnum.Success;
-            } catch (Exception ex) {
-                System.out.println("Error Register" + ex.getMessage());
-                return StatusRegisterUserEnum.Error_OnSystem;
-            }
-
+        return StatusRegisterUserEnum.Error_OnSystem;
     }
+
+    @Override
+    public List<RoleEntity> getActiveListRole(int userId) {
+        List<UserRoleEntity> listUserRoles = StreamSupport
+                .stream(userRoleRepository.findRolesOfUser(userId).spliterator(),false).collect(Collectors.toList());
+        return getListRole().stream().filter(roleEntity -> {
+            return (listUserRoles.stream().filter(userRoleEntity -> userRoleEntity.getRoleId() == roleEntity.getId()).findFirst().orElse(null) != null);
+        }).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<RoleEntity> getListRole() {
+        return StreamSupport
+                .stream(roleRepository.findAll().spliterator(),false)
+                .collect(Collectors.toList());
+    }
+
+
 }

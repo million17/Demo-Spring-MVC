@@ -2,40 +2,39 @@ package application.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "role")
-public class RoleEntity extends BaseEntity {
+public class RoleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(mappedBy = "roles")
-    private List<UserEntity> users = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.LAZY,
+    cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "user_role",
+    joinColumns = {@JoinColumn(name = "role_id")},
+    inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    private Set<UserEntity> listRole = new HashSet<>();
 
-    @Column(name = "code")
-    private String code;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public List<UserEntity> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<UserEntity> users) {
-        this.users = users;
-    }
-
-    public Long getId() {
+    public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -46,11 +45,11 @@ public class RoleEntity extends BaseEntity {
         this.name = name;
     }
 
-    public String getCode() {
-        return code;
+    public Set<UserEntity> getListRole() {
+        return listRole;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setListRole(Set<UserEntity> listRole) {
+        this.listRole = listRole;
     }
 }

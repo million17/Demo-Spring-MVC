@@ -9,7 +9,7 @@ public class NewEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @Column(name = "title")
     private String title;
@@ -35,11 +35,11 @@ public class NewEntity extends BaseEntity {
         this.category = category;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

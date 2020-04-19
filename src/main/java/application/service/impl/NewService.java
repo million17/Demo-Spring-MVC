@@ -9,7 +9,6 @@ import application.repository.NewRepository;
 import application.service.INewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +38,7 @@ public class NewService implements INewService {
     }
 
     @Override
-    public NewDTO findById(long id) {
+    public NewDTO findById(int id) {
         NewEntity entity = newRepository.findOne(id);
         return newConverter.toDTO(entity);
     }
@@ -49,7 +48,7 @@ public class NewService implements INewService {
     public NewDTO save(NewDTO newDTO) {
         CategoryEntity categoryEntity = categoryRepository.findOneByCode(newDTO.getCategoryCode());
         NewEntity newEntity = new NewEntity();
-        if(newDTO.getId() != null ) {
+        if(newDTO.getId() != 0 ) {
             NewEntity oldNew = newRepository.findOne(newDTO.getId());
             oldNew.setCategory(categoryEntity);
             newEntity = newConverter.toEntity(oldNew, newDTO);
@@ -61,8 +60,8 @@ public class NewService implements INewService {
     }
 
     @Override
-    public void delete(long[] ids) {
-        for (long id : ids ) {
+    public void delete(int[] ids) {
+        for (int id : ids ) {
             newRepository.delete(id);
         }
 
